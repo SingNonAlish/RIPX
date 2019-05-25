@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { GetDataService } from '../service/get-data.service';
+
 import { HttpClient } from '@angular/common/http';
 import { LoadingController } from '@ionic/angular';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -32,14 +32,16 @@ export class LoginPage implements OnInit {
   dep: string;
   picpath: string;
   email: string;
-  constructor(public http: HttpClient, public loadingController: LoadingController) { }
+  constructor(
+    public http: HttpClient, 
+    public loadingController: LoadingController,
+    public router: Router) { }
 
   ngOnInit() {
   }
 
   // tslint:disable-next-line: one-line
-  async getUrl() {
-    this.showAutoHideLoader();
+  async getUrl() {    
     // tslint:disable-next-line: max-line-length
     await this.http.get('http://it.e-tech.ac.th/ripx/api/getData.php?username=' + this.username + '&password=' + this.password + '&fbclid=IwAR3aMPkZe7V3bBimp0jGw-OBZVp_ynXm5UAfUO1m3p32rYdyLUO6wOMgvRU')
       .subscribe(
@@ -59,9 +61,11 @@ export class LoginPage implements OnInit {
             this.dep = this.allData.userDetail[0].status[0];
             this.picpath = this.allData.userDetail[0].picts[0];
             this.email = this.allData.userDetail[0].email[0];
+            this.showAutoHideLoader();
+            this.router.navigate(['/tabs/home/']);
           }
           // tslint:disable-next-line: comment-format
-          //console.log(this.allData.userDetail[0].id_code[0]);
+          //console.log(this.allData.userDetail[0].id_code[0]);          
         }, error => {
           console.log(error);
         }
@@ -70,8 +74,8 @@ export class LoginPage implements OnInit {
 
   showAutoHideLoader() {
     this.loadingController.create({
-      message: 'This Loader Will Auto Hide in 2 Seconds',
-      duration: 2000
+      message: 'รอสักครู่....',
+      duration: 500
     }).then((res) => {
       res.present();
 
