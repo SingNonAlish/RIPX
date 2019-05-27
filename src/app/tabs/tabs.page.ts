@@ -12,7 +12,7 @@ export class TabsPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.tabs.select('home');
+    // this.tabs.select('home');
   }
 
 }

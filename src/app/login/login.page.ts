@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
   picpath: string;
   email: string;
   constructor(
-    public http: HttpClient, 
+    public http: HttpClient,
     public loadingController: LoadingController,
     public router: Router) { }
 
@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
   }
 
   // tslint:disable-next-line: one-line
-  async getUrl() {    
+  async getUrl() {
     // tslint:disable-next-line: max-line-length
     await this.http.get('http://it.e-tech.ac.th/ripx/api/getData.php?username=' + this.username + '&password=' + this.password + '&fbclid=IwAR3aMPkZe7V3bBimp0jGw-OBZVp_ynXm5UAfUO1m3p32rYdyLUO6wOMgvRU')
       .subscribe(
@@ -65,7 +65,7 @@ export class LoginPage implements OnInit {
             this.router.navigate(['/tabs/home/']);
           }
           // tslint:disable-next-line: comment-format
-          //console.log(this.allData.userDetail[0].id_code[0]);          
+          //console.log(this.allData.userDetail[0].id_code[0]);
         }, error => {
           console.log(error);
         }
