@@ -6,6 +6,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <ion-item>
+    <ion-input type="text" placeholder="กรอกรหัส นศ." [(ngModel)]="idstu"></ion-input>
+    <ion-button expand="block" fill="clear" size="default" (click)="getStu()">
+      <ion-icon ios="ios-search" md="md-search"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-label *ngIf="sur">{{sur+fname+' '+lname}}</ion-label>
+  </ion-item>
 </ion-content>
