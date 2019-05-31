@@ -6,10 +6,7 @@
 
 <ion-content padding>
     <ion-list >
-        <ion-item *ngFor="let item of allData">        
-        <!-- <p>{{item}}</p>  -->
-        <!-- <label>{{item.datarem.remid}}</label> -->
-          <!-- <label>{{item.datarem.remname}}</label> -->
+        <ion-item *ngFor="let item of allDataRemark">        
           <ion-label>{{item.datarem.remname}}</ion-label>
           <ion-button color="warning" size="default" shape="round">แก้ไข
               <ion-icon name="create"></ion-icon>
@@ -17,7 +14,6 @@
           <ion-button color="danger" size="default" shape="round">ลบ
               <ion-icon name="trash"></ion-icon>
           </ion-button>
-          <!-- <ion-checkbox slot="end" checked="true"></ion-checkbox> -->
-          </ion-item>
-      </ion-list>
+        </ion-item>
+    </ion-list>
 </ion-content>

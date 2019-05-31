@@ -42,9 +42,9 @@ export class HomePage implements OnInit {
           // tslint:disable-next-line: variable-name
           this.items = JSON.stringify(obj);
           this.allData = JSON.parse(this.items);
-          console.log(this.allData.GetStudByIdResult);
-          if (this.allData.GetStudByIdResult !== 'undefined') {
-            console.log('true');
+          console.log(this.allData);
+          if (this.items.length !== 2) {
+            // console.log('true');
             this.sur = this.allData.GetStudByIdResult.student.surname;
             this.fname = this.allData.GetStudByIdResult.student.firstname;
             this.lname = this.allData.GetStudByIdResult.student.lastname;

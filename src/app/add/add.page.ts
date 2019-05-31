@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { GetDataService } from '../service/get-data.service';
 
 @Component({
   selector: 'app-add',
@@ -9,23 +10,25 @@ import { HttpClient } from '@angular/common/http';
 export class AddPage implements OnInit {
   items: any;
   result: JSON;
-  allData: any = [];
-  // obj_json: any;
-  constructor(public http: HttpClient) { }
+  allDataRemark: any = [];
+  constructor(public getdataSer: GetDataService, public http: HttpClient) { }
 
   ngOnInit() {
     this.getRemark();
   }
 
   async getRemark() {
+    // this.getdataSer.getRemark(url);
+    // console.log(this.getdataSer.allData[0].datarem.remname);
     await this.http.get('http://it.e-tech.ac.th/ripx/api/getRemark.php')
     .subscribe(
       data => {
         const obj = (data as any);
         // tslint:disable-next-line: variable-name
         this.items = JSON.stringify(obj);
-        this.allData = JSON.parse(this.items);
-        console.log(this.allData);
+        this.allDataRemark = JSON.parse(this.items);
+        // console.log(this.allDataRemark);
+        // console.log(this.allDataRemark[0].datarem.remname);
       });
   }
 }

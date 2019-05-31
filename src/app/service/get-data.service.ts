@@ -5,7 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class GetDataService {
-
+  items: any;
+  result: JSON;
+  allData: any = [];
+  // obj_json: any;
   constructor(public http: HttpClient) { }
 
   getUser(userx: string, passx: string) {
@@ -14,5 +17,16 @@ export class GetDataService {
       JSON.stringify(data);
       // console.log(JSON.stringify(data));
     });
+  }
+
+  getRemark(url: string) {
+    return this.http.get(url)
+    .subscribe(
+      data => {
+        const obj = (data as any);
+        this.items = JSON.stringify(obj);
+        // this.allData = JSON.parse(this.items);
+        // console.log(this.allData);
+      });
   }
 }
